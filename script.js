@@ -51,10 +51,24 @@ yesButton.addEventListener('mouseleave', () => {
 const dareText = document.querySelector('.dare-text');
 const vampireImage = document.querySelector('.vampire-image');
 
-// Vampire image popup when clicking Yes button
-yesButton.addEventListener('click', () => {
+// Vampire image popup ONLY when clicking Yes button
+yesButton.addEventListener('click', (event) => {
+    // Stop the event from propagating to the document
+    event.stopPropagation();
+    
+    // Show the vampire image
     vampireImage.classList.add('active');
+    
+    // Hide the vampire image after 5 seconds
     setTimeout(() => {
         vampireImage.classList.remove('active');
     }, 5000);
+});
+
+// Prevent any other clicks from showing the vampire image
+document.addEventListener('click', (event) => {
+    // If the click is not on the Yes button, make sure the vampire image is not shown
+    if (!event.target.closest('.response-button:first-child')) {
+        vampireImage.classList.remove('active');
+    }
 });

@@ -93,11 +93,13 @@ body {
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 1000;
-    pointer-events: none;
+    pointer-events: none; /* Prevents the image from receiving mouse events */
     box-shadow: 0 0 50px rgba(255,0,0,0.5);
+    visibility: hidden; /* Hide the image completely when not active */
 }
 
 .vampire-image.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    visibility: visible; /* Show the image when active */
 }
