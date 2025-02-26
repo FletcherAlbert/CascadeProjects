@@ -6,6 +6,8 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 .question-text {
@@ -17,6 +19,8 @@ body {
     font-size: 4.88rem;
     text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff0080;
     white-space: nowrap;
+    text-align: center;
+    width: 90%;
 }
 
 .response-buttons {
@@ -36,6 +40,8 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    user-select: none; /* Prevent text selection */
 }
 
 .response-button:hover {
@@ -102,4 +108,49 @@ body {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.05);
     visibility: visible; /* Show the image when active */
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .question-text {
+        font-size: 2.5rem;
+        top: 60px;
+        width: 90%;
+        white-space: normal;
+    }
+    
+    .response-buttons {
+        bottom: 60px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .response-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        width: 150px;
+        text-align: center;
+    }
+    
+    .dare-text {
+        font-size: 2.5rem;
+        top: 200px;
+        padding: 20px 30px;
+        white-space: normal;
+        width: 80%;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .question-text {
+        font-size: 2rem;
+        top: 40px;
+    }
+    
+    .dare-text {
+        font-size: 2rem;
+        top: 150px;
+    }
 }

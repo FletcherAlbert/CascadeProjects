@@ -24,6 +24,35 @@ noButton.addEventListener('mouseleave', () => {
     noButton.style.opacity = '1';
 });
 
+// Mobile touch event for No button
+noButton.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevent default touch behavior
+    
+    // Move the button away from the touch point
+    const touch = e.touches[0];
+    const rect = noButton.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    
+    // Calculate direction to move (away from touch)
+    const dirX = centerX - touch.clientX;
+    const dirY = centerY - touch.clientY;
+    
+    // Normalize and apply movement
+    const distance = Math.sqrt(dirX*dirX + dirY*dirY);
+    const normalizedX = dirX / distance * 100;
+    const normalizedY = dirY / distance * 100;
+    
+    noButton.style.transform = `translate(${normalizedX}px, ${normalizedY}px) scale(0.1)`;
+    noButton.style.opacity = '0.2';
+    
+    // Reset after a delay
+    setTimeout(() => {
+        noButton.style.transform = 'scale(1)';
+        noButton.style.opacity = '1';
+    }, 1000);
+});
+
 const yesButton = document.querySelector('.response-button:first-child');
 let dareTimer;
 
@@ -46,6 +75,14 @@ yesButton.addEventListener('mouseenter', () => {
 yesButton.addEventListener('mouseleave', () => {
     clearTimeout(dareTimer);
     dareText.style.opacity = '0';
+});
+
+// Mobile touch events for Yes button
+yesButton.addEventListener('touchstart', (e) => {
+    // Don't prevent default here to allow the click event to fire
+    
+    // Show the dare text
+    dareText.style.opacity = '1';
 });
 
 const dareText = document.querySelector('.dare-text');
@@ -75,3 +112,11 @@ document.addEventListener('click', (event) => {
         vampireImage.classList.remove('active');
     }
 });
+
+// Initialize for mobile - check if it's a touch device
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+// Add a class to the body if it's a touch device
+if (isTouchDevice) {
+    document.body.classList.add('touch-device');
+}
