@@ -34,7 +34,8 @@ body {
     border-radius: 12px;
     font-size: 1.6rem;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .response-button:hover {
@@ -50,6 +51,8 @@ body {
 
 .response-button:first-child:hover {
     animation: shake 0.25s infinite;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .dare-text {
@@ -58,7 +61,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     background: transparent;
     color: white;
     padding: 34px 68px;
@@ -69,6 +72,7 @@ body {
     font-weight: bold;
     text-shadow: 0 0 20px #9d00ff, 0 0 40px #9d00ff80;
     pointer-events: none;
+    z-index: 100;
 }
 
 .gotem-text {
@@ -83,14 +87,17 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.9);
     max-width: 90vw;
     max-height: 90vh;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 0 50px rgba(255,0,0,0.5);
 }
 
 .vampire-image.active {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }

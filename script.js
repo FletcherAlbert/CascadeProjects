@@ -1,11 +1,12 @@
 const noButton = document.querySelector('.response-button:last-child');
 let resetTimeout;
 
+// No button shrink and move away effect
 noButton.addEventListener('mousemove', (e) => {
     const rect = noButton.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    noButton.style.transform = `translate(${(x - rect.width/2) * 0.3}px, ${(y - rect.height/2) * 0.3}px) scale(0.1)`;
+    noButton.style.transform = `translate(${(x - rect.width/2) * -0.5}px, ${(y - rect.height/2) * -0.5}px) scale(0.1)`;
 });
 
 noButton.addEventListener('mouseenter', () => {
@@ -24,12 +25,21 @@ noButton.addEventListener('mouseleave', () => {
 });
 
 const yesButton = document.querySelector('.response-button:first-child');
-let yesResetTimer;
+let dareTimer;
 
+// Dare text popup when hovering on Yes button
 yesButton.addEventListener('mouseenter', () => {
+    // Clear any existing timers
+    clearTimeout(dareTimer);
+    
+    // Show the dare text after a short delay
     dareTimer = setTimeout(() => {
         dareText.style.opacity = '1';
-        setTimeout(() => dareText.style.opacity = '0', 3000);
+        
+        // Hide the dare text after 3 seconds
+        setTimeout(() => {
+            dareText.style.opacity = '0';
+        }, 3000);
     }, 300);
 });
 
@@ -39,11 +49,9 @@ yesButton.addEventListener('mouseleave', () => {
 });
 
 const dareText = document.querySelector('.dare-text');
-let dareTimer;
-
-const gotemText = document.querySelector('.gotem-text');
 const vampireImage = document.querySelector('.vampire-image');
 
+// Vampire image popup when clicking Yes button
 yesButton.addEventListener('click', () => {
     vampireImage.classList.add('active');
     setTimeout(() => {
