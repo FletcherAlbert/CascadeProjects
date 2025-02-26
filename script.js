@@ -59,10 +59,10 @@ yesButton.addEventListener('click', (event) => {
     // Show the vampire image
     vampireImage.classList.add('active');
     
-    // Hide the vampire image after 5 seconds
+    // Hide the vampire image after 300ms (reduced from 5000ms)
     setTimeout(() => {
         vampireImage.classList.remove('active');
-    }, 5000);
+    }, 300);
 });
 
 // Prevent any other clicks from showing the vampire image
