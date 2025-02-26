@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+    background-image: url('Aus Background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.question-text {
+    position: absolute;
+    top: 94px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0;
+    font-size: 4.88rem;
+    text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff0080;
+    white-space: nowrap;
+}
+
+.response-buttons {
+    position: absolute;
+    bottom: 94px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 94px;
+}
+
+.response-button {
+    padding: 1.33rem 2.66rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.response-button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0) scale(1.05); }
+    25% { transform: translateX(-8px) scale(1.05); }
+    75% { transform: translateX(8px) scale(1.05); }
+    100% { transform: translateX(0) scale(1.05); }
+}
+
+.response-button:first-child:hover {
+    animation: shake 0.25s infinite;
+}
+
+.dare-text {
+    position: absolute;
+    top: 329px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: transparent;
+    color: white;
+    padding: 34px 68px;
+    border-radius: 16px;
+    font-size: 6.1rem;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    text-shadow: 0 0 20px #9d00ff, 0 0 40px #9d00ff80;
+    pointer-events: none;
+}
+
+.gotem-text {
+    /* Removed styles */
+}
+
+.gotem-text.active {
+    /* Removed styles */
+}
+
+.vampire-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.vampire-image.active {
+    opacity: 1;
+}
