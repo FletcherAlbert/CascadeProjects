@@ -56,6 +56,9 @@ yesButton.addEventListener('click', (event) => {
     // Stop the event from propagating to the document
     event.stopPropagation();
     
+    // Hide the dare text immediately when vampire appears
+    dareText.style.opacity = '0';
+    
     // Show the vampire image
     vampireImage.classList.add('active');
     
